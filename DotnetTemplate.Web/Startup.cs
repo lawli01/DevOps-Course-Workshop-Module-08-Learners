@@ -18,6 +18,7 @@ namespace DotnetTemplate.Web
         public void ConfigureServices(IServiceCollection services)
         {
             var mvcBuilder = services.AddControllersWithViews();
+            services.AddHealthChecks();
             if (env.IsDevelopment())
             {
                 mvcBuilder.AddRazorRuntimeCompilation();
@@ -41,6 +42,7 @@ namespace DotnetTemplate.Web
         private static void ConfigureEndPointsAsync(IEndpointRouteBuilder endpoints)
         {
             endpoints.MapControllerRoute("default", "{controller=Home}/{action=FirstPage}");
+            endpoints.MapHealthChecks("/health");
         }
     }
 }
