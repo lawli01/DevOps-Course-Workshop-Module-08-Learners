@@ -21,3 +21,6 @@ jobs:
           heroku_app_name: "dotnettemplate2" #Must be unique in Heroku
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           usedocker: true
+          healthcheck: "https://dotnettemplate2.herokuapp.com/health"
+          delay: 5
+          rollbackonhealthcheckfailed: true
